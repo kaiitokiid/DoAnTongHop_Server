@@ -32,6 +32,10 @@ router.put('/edit/:id', (req, res, next) => {
     verifyUserToken(req, res, next, constants.ROLE.SHOP)
 }, productController.editProduct);
 
+router.patch('/stock/:id', (req, res, next) => {
+    verifyUserToken(req, res, next, constants.ROLE.SHOP)
+}, productController.stock);
+
 router.delete('/delete/:id', (req, res, next) => {
     verifyUserToken(req, res, next, constants.ROLE.SHOP)
 }, productController.deleteProduct);

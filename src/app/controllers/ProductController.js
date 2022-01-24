@@ -57,6 +57,11 @@ class ProductController {
         productModule.editProduct(req, res);
     }
 
+    // [PATCH] /product/stock/:id
+    stock(req, res, next) {
+        productModule.stock(req, res);
+    }
+
     // [DELETE] /product/delete/:id
     deleteProduct(req, res, next) {
         productModule.deleteProduct(req, res);

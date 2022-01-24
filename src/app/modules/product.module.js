@@ -121,6 +121,39 @@ module.exports = Object.freeze({
             })
     },
 
+    stock: function (req, res) {
+        const id = req.params.id
+        const stock = Number(req.body.stock)
+
+        Product.findOne({ _id: id })
+            .then(data => {
+                console.log(data);
+                Product.updateOne({ _id: id }, { stock: (data.stock + stock) })
+                    .then(data => {
+                        console.log(data);
+                        if (data.acknowledged)
+                            return res.json({
+                                isSuccess: true,
+                                message: "Nhập hàng thành công!"
+                            })
+                    })
+                    .catch(err => {
+                        return res.json({
+                            isSuccess: false,
+                            message: "Nhập hàng thất bại!"
+                        })
+                    })
+
+            })
+            .catch(err => {
+                console.log(err);
+                res.json({
+                    isSuccess: false,
+                    message: "Lỗi"
+                })
+            })
+    },
+
     changeInfo: function (req, res) {
         const id = req.id;
         User.updateOne({ _id: id }, req.body)

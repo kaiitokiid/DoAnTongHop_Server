@@ -152,8 +152,6 @@ module.exports = Object.freeze({
                     message: "Update đơn hàng thất bại!"
                 });
             })
-
-
     },
 
     getTurnover: function (req, res) {
